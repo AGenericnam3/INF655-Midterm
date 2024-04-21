@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './app.css';
 import Products from './components/products';
+import {LightModeProvider} from 'context/LightModeContext';
+import {DarkModeProvider} from 'context/DarkModeContext';
 
 const express = require('express');
 const app = express();
@@ -14,6 +17,18 @@ app.use('/scripts', express.static(__dirname + '/node_modules/bootstrap/dist/'))
 app.listen(PORT, () => {
   console.log(`Server is running and listening on port ${PORT}`);
 });
+
+ReactDOM.render(
+  <React.StrictMode>
+    <LightModeProvider>
+      <App />
+    </LightModeProvider>
+    <DarkModeProvider>
+      <App />
+    </DarkModeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 const App = () => {
   const products = [
@@ -57,5 +72,15 @@ const App = () => {
     </div>
   );
 };
+
+function App() {
+  const [theme, setTheme] = useState('light'); // Default theme
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {/* Your app components */}
+    </ThemeContext.Provider>
+  );
+}
 
 export default App;

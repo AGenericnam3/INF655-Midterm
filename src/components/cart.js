@@ -1,5 +1,28 @@
 import React, { useState } from 'react';
 
+import { LightModeContext } from './context/LightModeContext';
+import { DarkModeContext } from './context/DarkModeContext';
+const lightTheme = () => {
+  const { lightMode, toggleLightMode } = useContext(LightModeContext);
+  return (
+    <div>
+      <h1>{lightMode ? 'light Mode' : 'Light Mode'}</h1>
+      <button onClick={toggleLightMode}>Toggle Theme</button>
+    </div>
+  );
+};
+
+const darkTheme = () => {
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+  return (
+    <div>
+      <h1>{darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
+      <button onClick={toggleDarkMode}>Toggle Theme</button>
+    </div>
+  );
+};
+
 const Cart = () => {
   // Initialize Cart with an empty array
   const [cartItems, setCartItems] = useState([]);
@@ -14,7 +37,28 @@ const Cart = () => {
     const updatedCart = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCart);
   };
-
+  const lightTheme = () => {
+    const { lightMode, toggleLightMode } = useContext(LightModeContext);
+  
+    return (
+      <div>
+        <h1>{lightMode ? 'light Mode' : 'Light Mode'}</h1>
+        <button onClick={toggleLightMode}>Toggle Theme</button>
+      </div>
+    );
+  };
+  
+  const darkTheme = () => {
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  
+    return (
+      <div>
+        <h1>{darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
+        <button onClick={toggleDarkMode}>Toggle Theme</button>
+      </div>
+    );
+  };
+  
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
@@ -39,4 +83,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default {Cart, lightTheme, darkTheme};

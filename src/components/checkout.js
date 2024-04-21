@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-
+import { LightModeContext } from './context/LightModeContext';
+import { DarkModeContext } from './context/DarkModeContext';
 const Checkout = ({ cartItems, total }) => {
   const [shippingInfo, setShippingInfo] = useState({
     name: '',
@@ -12,7 +12,28 @@ const Checkout = ({ cartItems, total }) => {
   });
 
   const history = useHistory();
-
+  const lightTheme = () => {
+    const { lightMode, toggleLightMode } = useContext(LightModeContext);
+  
+    return (
+      <div>
+        <h1>{lightMode ? 'light Mode' : 'Light Mode'}</h1>
+        <button onClick={toggleLightMode}>Toggle Theme</button>
+      </div>
+    );
+  };
+  
+  const darkTheme = () => {
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  
+    return (
+      <div>
+        <h1>{darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
+        <button onClick={toggleDarkMode}>Toggle Theme</button>
+      </div>
+    );
+  };
+  
   const handleFormSubmit = (e) => {
     e.preventDefault();// Handle the form submission
     clearCart(); // Clear cart after successful submission
@@ -49,4 +70,4 @@ const Checkout = ({ cartItems, total }) => {
   );
 };
 
-export default Checkout;
+export default {Checkout,lightTheme, darkTheme};

@@ -1,8 +1,32 @@
 import { createContext, useReducer, useContext, useEffect } from 'react';
 import commerce from './lib/commerce'; // Import Commerce.js
+import { LightModeContext } from './context/LightModeContext';
+import { DarkModeContext } from './context/DarkModeContext';
 
 const CartStateContext = createContext(null);
 const CartDispatchContext = createContext(null);
+
+const lightTheme = () => {
+  const { lightMode, toggleLightMode } = useContext(LightModeContext);
+
+  return (
+    <div>
+      <h1>{lightMode ? 'light Mode' : 'Light Mode'}</h1>
+      <button onClick={toggleLightMode}>Toggle Theme</button>
+    </div>
+  );
+};
+
+const darkTheme = () => {
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+  return (
+    <div>
+      <h1>{darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
+      <button onClick={toggleDarkMode}>Toggle Theme</button>
+    </div>
+  );
+};
 
 const SET_CART = 'SET_CART';
 
@@ -50,3 +74,4 @@ export const CartProvider = ({ children }) => {
 
 export const useCartState = () => useContext(CartStateContext);
 export const useCartDispatch = () => useContext(CartDispatchContext);
+export default {lightTheme, darkTheme};
