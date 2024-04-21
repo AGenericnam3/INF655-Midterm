@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script>
+        import "components/search.js"
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <title>Generic's Produce Shop</title>
+</head>
+<body>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <!-- Navigation bar -->
+    <nav class="navigation_bar">
+        <!-- Logo -->
+        <div class="nav">
+            <img src="img/dark-logo.png" class="brand-logo" alt="">
+            <!-- Search Box -->
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="Search brand, product">
+                    <button class="search-btn">Search</button>
+                </div>
+                <!-- User and Cart Icons -->
+                <a href="#"><img src="resources/user.png" alt=""></a>
+                <a href="#"><img src="resources/cart.png" alt=""></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Links below Navbar -->
+    <ul class="links-container">
+        <li class="link-item"><a href="search.js" class="link">Search</a></li>
+        <li class="link-item"><a href="index.html" class="link">Home</a></li>
+        <li class="link-item"><a href="product.js" class="link">Product Details</a></li>
+        <li class="link-item"><a href="cart.js" class="link">Cart</a></li>
+        <li class="link-item"><a href="checkout.js" class="link">Checkout</a></li>
+    </ul>
+    <p>Welcome to my shop! I sell vegetables at an affordable price.</p>
+</body>
+
+<footer> 
+    Copyright &copy; 2024 Generic's Produce Shop <br>
+    <a href="Jaylon@Essix.com"> Jaylon@Essix.com</a>
+</footer>
+</html>
